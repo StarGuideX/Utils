@@ -69,169 +69,102 @@ namespace WpfCustomControlLibrary
                 Resources.Source = new Uri(@"/WpfCustomControlLibrary;component/Themes/Generic.xaml", UriKind.Relative);
 
                 CtrlButtonStyle = Resources["default_Button"] as Style;
-
             }
             catch
             {
             }
         }
 
-        //
-        // 摘要:
-        //     显示一个消息，然后返回结果的消息框。
-        //
-        // 参数:
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+        /// <summary>
+        ///  显示一个消息，然后返回结果的消息框。
+        /// </summary>
+        /// <param name="messageBoxText"> 指定文本显示的 System.String 。</param>
+        /// <returns> 指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(string messageBoxText)
         {
             return Show(null, messageBoxText, "消息", MessageBoxButton.OKCancel, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示一个消息和标题栏声明的消息框;并返回结果。
-        //
-        // 参数:
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+        /// <summary>
+        /// 显示一个消息和标题栏声明的消息框;并返回结果。
+        /// </summary>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <returns>System.Windows.MessageBoxResult</returns>
         public static MessageBoxResult Show(string messageBoxText, string caption)
         {
             return Show(null, messageBoxText, caption, MessageBoxButton.OKCancel, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示在指定的窗口前面的消息框。消息框显示该消息并返回结果。
-        //
-        // 参数:
-        //   owner:
-        //     表示消息框的所有者窗口的 System.Windows.Window 。
-        //
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示在指定的窗口前面的消息框。消息框显示该消息并返回结果。
+        /// </summary>
+        /// <param name="owner">表示消息框的所有者窗口的 System.Windows.Window 。</param>
+        /// <param name="messageBoxText">指定文本显示的 System.String。 </param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(Window owner, string messageBoxText)
         {
             return Show(owner, messageBoxText, "消息", MessageBoxButton.OKCancel, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示一个消息、标题栏声明和按钮的消息框;并返回结果。
-        //
-        // 参数:
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        //   button:
-        //     指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示一个消息、标题栏声明和按钮的消息框;并返回结果。
+        /// </summary>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <param name="button">指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。</param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
         {
             return Show(null, messageBoxText, caption, button, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示在指定的窗口前面的消息框。消息框显示消息和标题栏声明;它返回结果。
-        //
-        // 参数:
-        //   owner:
-        //     表示消息框的所有者窗口的 System.Windows.Window 。
-        //
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示在指定的窗口前面的消息框。消息框显示消息和标题栏声明;它返回结果。
+        /// </summary>
+        /// <param name="owner">表示消息框的所有者窗口的 System.Windows.Window 。</param>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(Window owner, string messageBoxText, string caption)
         {
             return Show(owner, messageBoxText, caption, MessageBoxButton.OKCancel, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示在指定的窗口前面的消息框。消息框显示消息、标题栏声明和按钮;它还返回结果。
-        //
-        // 参数:
-        //   owner:
-        //     表示消息框的所有者窗口的 System.Windows.Window 。
-        //
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        //   button:
-        //     指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示在指定的窗口前面的消息框。消息框显示消息、标题栏声明和按钮;它还返回结果。
+        /// </summary>
+        /// <param name="owner">表示消息框的所有者窗口的 System.Windows.Window 。</param>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <param name="button">指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。</param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button)
         {
             return Show(owner, messageBoxText, caption, button, MessageBoxResult.None);
         }
-        //
-        // 摘要:
-        //     显示具有消息、标题栏说明、按钮和图标的消息框;这接受一个默认消息框的结果并返回结果。
-        //
-        // 参数:
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        //   button:
-        //     指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。
-        //
-        //   defaultResult:
-        //     指定消息框的默认结果的 System.Windows.MessageBoxResult 值。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示具有消息、标题栏说明、按钮的消息框;这接受一个默认消息框的结果并返回结果。
+        /// </summary>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <param name="button">指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。</param>
+        /// <param name="defaultResult">指定消息框的默认结果的 System.Windows.MessageBoxResult 值。</param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxResult defaultResult)
         {
             return Show(null, messageBoxText, caption, button, defaultResult);
         }
-        //
-        // 摘要:
-        //     
-        //
-        // 参数:
-        //   owner:
-        //     表示消息框的所有者窗口的 System.Windows.Window 。
-        //
-        //   messageBoxText:
-        //     指定文本显示的 System.String 。
-        //
-        //   caption:
-        //     指定标题栏声明中显示的 System.String 。
-        //
-        //   button:
-        //     指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。
-        //
-        //   defaultResult:
-        //     指定消息框的默认结果的 System.Windows.MessageBoxResult 值。
-        //
-        // 返回结果:
-        //     指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。
+
+        /// <summary>
+        /// 显示在指定的窗口前面的消息框。显示具有消息、标题栏说明、按钮的消息框;这接受一个默认消息框的结果并返回结果。
+        /// </summary>
+        /// <param name="owner">表示消息框的所有者窗口的 System.Windows.Window 。</param>
+        /// <param name="messageBoxText">指定文本显示的 System.String 。</param>
+        /// <param name="caption">指定标题栏声明中显示的 System.String 。</param>
+        /// <param name="button">指定的 System.Windows.MessageBoxButton 值要显示的按钮或按钮。</param>
+        /// <param name="defaultResult">指定消息框的默认结果的 System.Windows.MessageBoxResult 值。</param>
+        /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxResult defaultResult)
         {
             // MessageBox.Show();
@@ -284,11 +217,11 @@ namespace WpfCustomControlLibrary
                     }
                 case MessageBoxButton.OK:
                     {
-                        return result == true ? MessageBoxResult.OK : MessageBoxResult.No;
+                        return result == true ? MessageBoxResult.OK : MessageBoxResult.Cancel;
                     }
                 default:
                     {
-                        return result == true ? MessageBoxResult.OK : MessageBoxResult.No;
+                        return result == true ? MessageBoxResult.OK : MessageBoxResult.Cancel;
                     }
             }
         }
@@ -301,6 +234,13 @@ namespace WpfCustomControlLibrary
             btn.CommandBindings.Add(binding);
             return btn;
         }
+        /// <summary>
+        /// 由于原因，按cancel和no按钮，都会返回false
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="e"></param>
+        /// <param name="customMessageBox"></param>
+        /// <param name="dialogResult"></param>
         private static void MessageBoxBtn_Excuted(object o, ExecutedRoutedEventArgs e, CustomMeassageBox customMessageBox, bool? dialogResult)
         {
             if (dialogResult.HasValue)
@@ -312,6 +252,5 @@ namespace WpfCustomControlLibrary
                 customMessageBox.Close();
             }
         }
-
     }
 }
