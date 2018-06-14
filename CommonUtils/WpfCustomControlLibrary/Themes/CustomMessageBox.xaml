@@ -3,33 +3,35 @@
                     xmlns:local="clr-namespace:WpfCustomControlLibrary">
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MessageBoxCT, TypeInTargetAssembly={x:Type local:CustomMeassageBox}}"
                      TargetType="{x:Type local:CustomMeassageBox}">
-        <Border Background="White"
-                            BorderBrush="Black"
-                            BorderThickness="2"
-                            CornerRadius="3"
-                            Margin="8">
+        <Border Background="#071a42" BorderBrush="#2b408f" BorderThickness="1" Margin="8">
+            <Border.Effect>
+                <DropShadowEffect Color="#4C63BB" >
+                </DropShadowEffect>
+            </Border.Effect>
             <Grid x:Name="grid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="PART_Title"
-                                       Text="{TemplateBinding Title}"
-                                       Grid.Row="0"
-                                       Margin="10,4"
-                                       TextTrimming="CharacterEllipsis"
-                                       Foreground="Red" />
-                <Border Grid.Row="0"
-                                    BorderBrush="Red"
-                                    BorderThickness="0,0,0,1" />
-                <TextBlock x:Name="PART_Message" Text="{TemplateBinding Message}"
-                                       Grid.Row="1"
-                                       Margin="10"
-                                       TextTrimming="None"
-                                       Foreground="Black"
-                                       TextWrapping="WrapWithOverflow"
-                                       FontSize="15" />
+                <Grid Grid.Row="0" >
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/WpfCustomControlLibrary;component/Images/pop_top.png"></ImageBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"  Source="/WpfCustomControlLibrary;component/Images/pop_title.png" Margin="15,0,0,0" VerticalAlignment="Center"></Image>
+                    <TextBlock Grid.Column="1" x:Name="PART_Title" Text="{TemplateBinding Title}" FontWeight="Bold" 
+                               Margin="10,0,0,0" TextTrimming="CharacterEllipsis" Foreground="#ffffff" FontSize="16" VerticalAlignment="Center"/>
+                    <Image Opacity="0.7" Grid.Column="2" x:Name="PART_CloseImg" Source="/WpfCustomControlLibrary;component/Images/pop_close.png" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"></Image>
+                </Grid>
+                <TextBlock x:Name="PART_Message" Text="{TemplateBinding Message}" Grid.Row="1" 
+                           TextTrimming="None" Foreground="#ffffff" TextWrapping="WrapWithOverflow" 
+                           FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
                 <ItemsControl x:Name="PART_CtrlButtonCollection" Grid.Row="2"
                                           Margin="10"
                                           ItemsSource="{TemplateBinding CtrlButtonCollection}"
@@ -48,14 +50,14 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type local:CustomMeassageBox}">
-        <Setter Property="MinWidth"
-                Value="330" />
-        <Setter Property="MinHeight"
-                Value="145" />
-        <Setter Property="MaxWidth"
-                Value="600" />
+        <Setter Property="Width"
+                Value="412" />
+        <Setter Property="Height"
+                Value="234" />
+        <!--<Setter Property="MaxWidth"
+                Value="500" />
         <Setter Property="MaxHeight"
-                Value="330" />
+                Value="330" />-->
         <!--<Setter Property="WindowStyle"
                 Value="None" />
         <Setter Property="Background"
@@ -76,4 +78,27 @@
                 Value="{DynamicResource Window.Static.FontFamily}" />-->
         <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=MessageBoxCT, TypeInTargetAssembly={x:Type local:CustomMeassageBox}}}"></Setter>
     </Style>
+
+    <Style x:Key="default_Button" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderThickness="0" CornerRadius="5,5,5,5" Background="#184190" >
+                        <Border.BorderBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#184190"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#FF184190"/>
+    </Style>
+
 </ResourceDictionary>

@@ -84,5 +84,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pop_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pop_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pop_close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

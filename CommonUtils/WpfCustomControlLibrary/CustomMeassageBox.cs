@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using WpfCustomControlLibrary.Commands;
 
 namespace WpfCustomControlLibrary
 {
+    [TemplatePart(Name = "PART_CloseImg",Type =typeof(RangeBase))]
     public class CustomMeassageBox : Window
     {
         #region Property
@@ -69,10 +71,43 @@ namespace WpfCustomControlLibrary
                 Resources.Source = new Uri(@"/WpfCustomControlLibrary;component/Themes/Generic.xaml", UriKind.Relative);
 
                 CtrlButtonStyle = Resources["default_Button"] as Style;
+
             }
             catch
             {
             }
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            Image imageClose = GetTemplateChild("PART_CloseImg") as Image;
+            if (imageClose != null)
+            {
+                imageClose.MouseEnter += (s, e) => {
+                    imageClose.Opacity = 1;
+                    this.Cursor = Cursors.Hand;
+                };
+
+                imageClose.MouseLeave += (s, e) =>
+                {
+                    imageClose.Opacity = 0.7;
+                    this.Cursor = Cursors.Arrow;
+                };
+            }
+            foreach (Button item in CtrlButtonCollection)
+            {
+                item.MouseEnter += (s, e) => {
+                    this.Cursor = Cursors.Hand;
+                };
+
+                item.MouseLeave += (s, e) => {
+                    this.Cursor = Cursors.Arrow;
+                };
+            }
+            
+
         }
 
         /// <summary>
@@ -103,7 +138,7 @@ namespace WpfCustomControlLibrary
         /// <returns>指定的 System.Windows.MessageBoxResult 值哪个消息框按钮由用户单击。</returns>
         public static MessageBoxResult Show(Window owner, string messageBoxText)
         {
-            return Show(owner, messageBoxText, "消息", MessageBoxButton.OKCancel, MessageBoxResult.None);
+            return Show(owner, messageBoxText, "提示消息", MessageBoxButton.OKCancel, MessageBoxResult.None);
         }
 
         /// <summary>
@@ -252,5 +287,9 @@ namespace WpfCustomControlLibrary
                 customMessageBox.Close();
             }
         }
+
+
+
+
     }
 }

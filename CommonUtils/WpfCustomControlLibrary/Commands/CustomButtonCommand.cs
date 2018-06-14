@@ -13,6 +13,7 @@ namespace WpfCustomControlLibrary.Commands
 
         static CustomButtonCommand()
         {
+            
             InputGestureCollection inputs = new InputGestureCollection();
             inputs.Add(new MouseGesture(MouseAction.LeftClick, ModifierKeys.None));
 
